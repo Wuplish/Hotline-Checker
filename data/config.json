@@ -1,0 +1,9 @@
+{
+  "threads": 3,
+  "headless": true,
+  "slowMo": 0,
+  "devtools": false,
+  "ignoreHTTPSErrors": true,
+  "viewportWidth": 1920,
+  "viewportHeight": 1080
+}
