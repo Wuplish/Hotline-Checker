@@ -67,7 +67,7 @@
 
 ## Videolar
 
-* Konsol versiyon: [https://vimeo.com/1096440215](https://vimeo.com/1096440215)
+* Konsol versiyon(old): [https://vimeo.com/1096440215](https://vimeo.com/1096440215)
 * Web GUI versiyon: [https://vimeo.com/1096449117](https://vimeo.com/1096449117)
 
 ---
