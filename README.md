@@ -10,6 +10,7 @@
 * Lisans kodu ve cihaz UUID kontrolü ile güvenli erişim sağlar.
 * Playwright kullanarak OrbitPremium sitesine giriş yapar, hesapların lisans durumunu kontrol eder.
 * Test edilen hesapları üç farklı kategoriye ayırır ve `data/accs/` klasöründe ayrı dosyalara kaydeder:
+
   * Lisanslı hesaplar
   * Lisanssız ama giriş başarılı hesaplar
   * Giriş başarısız (şifre hatalı) hesaplar
@@ -45,7 +46,7 @@
 * `data/config.json` dosyasının doğru yapılandırılması
 * `data/accounts.txt` dosyasına hesapların eklenmesi
 * Kodun içersinden Webhook ayarlandırması yapılması
-  
+
 ---
 
 ## config.json örneği
@@ -58,9 +59,16 @@
   "devtools": false,
   "ignoreHTTPSErrors": false,
   "viewportWidth": 1920,
-  "viewportHeight": 1080,
+  "viewportHeight": 1080
 }
 ```
+
+---
+
+## Videolar
+
+* Konsol versiyon: [https://vimeo.com/1096440215](https://vimeo.com/1096440215)
+* Web GUI versiyon: [https://vimeo.com/1096449117](https://vimeo.com/1096449117)
 
 ---
 
