@@ -26,12 +26,12 @@ public class Output {
         writeLine(invalidPath, username + ":" + password);
     }
 
-    public static void writeNoLicense(String username, String password) {
-        writeLine(noLicensePath, username + ":" + password);
+    public static void writeNoLicense(String username, String password, String money) {
+        writeLine(noLicensePath, username + ":" + password + ":" + money);
     }
 
-    public static void writeLicensed(String username, String password, String license) {
-        writeLine(licensedPath, username + ":" + password + ":" + license);
+    public static void writeLicensed(String username, String password, String license, String money) {
+        writeLine(licensedPath, username + ":" + password + ":" + license + ":" + money);
     }
 
     // İstersen dosyaları temizlemek için metodlar da ekleyebilirim

